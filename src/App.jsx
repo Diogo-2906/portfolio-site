@@ -7,9 +7,9 @@ import Educacao from "./components/sections/Educacao";
 import Trabalhos from "./components/sections/Trabalhos";
 import Contatos from "./components/sections/Contatos";
 import Footer from "./components/sections/Footer";
-import Navbar from "./components/sections/NavBar";
 import CurvedLoop from "./components/animations/CurvedLoop";
 import CurvedLoopFooter from "./components/animations/CurvedLoopFooter";
+import Slidebar from "./components/sections/Slidebar";
 
 /* Estilos globais */
 import "./components/styles/Global.css";
@@ -31,7 +31,9 @@ export default function App() {
 
   return (
     <div className="container">
-      <Navbar toggleTheme={toggleTheme} lightMode={lightMode} />
+      <div className="app">
+        <Slidebar toggleTheme={toggleTheme} lightMode={lightMode} />
+      </div>
 
       <section id="inicio">
         <Intro />
