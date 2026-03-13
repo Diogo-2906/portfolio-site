@@ -1,29 +1,30 @@
 import { useState } from "react";
 import "../styles/Slidebar.css";
-import { h3 } from "motion/react-client";
 
 const menuItems = [
-  { label: "Início", href: "#inicio", section: "inicio" },
-  { label: "Sobre mim", href: "#sobre", section: "sobre" },
-  { label: "Formações", href: "#educacao", section: "educacao" },
-  { label: "Trabalhos", href: "#trabalhos", section: "trabalhos" },
-  { label: "Contatos", href: "#contatos", section: "contatos" },
+  { label: "Início", section: "inicio" },
+  { label: "Sobre mim", section: "sobre" },
+  { label: "Formações", section: "educacao" },
+  { label: "Trabalhos", section: "trabalhos" },
+  { label: "Contatos", section: "contatos" },
 ];
 
 function Overlay({ onClose }) {
   return <div className="overlay" onClick={onClose} />;
 }
 
-function MenuItem({ label, href, active, onClick }) {
+function MenuItem({ label, section, active, onClick }) {
   return (
-
-    <a href={href}
-      className={`menu-item ${active ? "active" : ""}`
-      }
-      onClick={onClick}
+    <a
+      href={`#${section}`}
+      className={`menu-item ${active ? "active" : ""}`}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(section);
+      }}
     >
       {label}
-    </a >
+    </a>
   );
 }
 
@@ -34,6 +35,15 @@ export default function Slidebar({ toggleTheme, lightMode }) {
   const handleClick = (section) => {
     setActive(section);
     setOpen(false);
+
+    // Aguarda a animação de fechar a sidebar (350ms) antes de rolar
+    setTimeout(() => {
+      const target = document.getElementById(section);
+      if (target) {
+        const top = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 380);
   };
 
   return (
@@ -54,9 +64,9 @@ export default function Slidebar({ toggleTheme, lightMode }) {
           <MenuItem
             key={item.section}
             label={item.label}
-            href={item.href}
+            section={item.section}
             active={active === item.section}
-            onClick={() => handleClick(item.section)}
+            onClick={handleClick}
           />
         ))}
 
