@@ -10,6 +10,7 @@ import Footer from "./components/sections/Footer";
 import CurvedLoop from "./components/animations/CurvedLoop";
 import CurvedLoopFooter from "./components/animations/CurvedLoopFooter";
 import Slidebar from "./components/sections/Slidebar";
+import DiamondBackground from "./components/DiamondBackground";
 
 /* Estilos globais */
 import "./components/styles/Global.css";
@@ -27,10 +28,10 @@ export default function App() {
 
   const toggleTheme = () => setLightMode((prev) => !prev);
 
-
-
   return (
     <div className="container">
+      <DiamondBackground lightMode={lightMode} />
+
       <div className="app">
         <Slidebar toggleTheme={toggleTheme} lightMode={lightMode} />
       </div>

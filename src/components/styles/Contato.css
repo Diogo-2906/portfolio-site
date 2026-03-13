@@ -47,14 +47,14 @@
     padding: 12px;
     border-radius: 8px;
     border: none;
-    background: #00811a;
-    color: white;
+    background: #9a8b84;
+    color: white !important;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 .form-contato button:hover {
-    opacity: 0.8;
+   background: #877b76;
 }
 
 .icon-list {

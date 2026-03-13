@@ -7,6 +7,11 @@
     top: 20%;
     left: 5%;
     z-index: 0;
+    transition: color 0.5s ease;
+}
+
+body.light .texto-grande {
+    color: #7a6255;
 }
 
 .intro-info {
